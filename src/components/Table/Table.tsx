@@ -1,7 +1,7 @@
 import {FC} from "react";
 import {useSortableData} from "hooks/useSortableData";
 import {Car, TariffsList} from "types";
-import "./Table.scss";
+import "./table.scss";
 
 type Props = {
   tariffsList: TariffsList,
