@@ -1,0 +1,64 @@
+@import 'src/shared';
+
+.table-cars{
+  border: $content-border;
+  min-width: 700px;
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  & th{
+    background: rgba(240, 242, 244, 0.5);
+    width: calc(100%/6);
+    border: $content-border;
+    border-collapse: collapse;
+    height: 48px;
+    &:hover{
+      opacity: 0.9;
+    }
+    & button{
+      background: transparent;
+      width: 100%;
+      height: 100%;
+      font-weight: $secondary-font-weight;
+      font-size: $secondary-font-size;
+      text-align: center;
+      color: #7B8395;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+    & button.ascending::after {
+      position: relative;
+      content: url("../../assets/filter.svg");
+      display: inline-block;
+    }
+    & button.descending::after {
+      position: relative;
+      content: url("../../assets/filter.svg");
+      transform: rotateX(180deg);
+      display: inline-block;
+    }
+  }
+  & tbody tr {
+    cursor: pointer;
+    &:hover{
+      background: rgba(240, 242, 244, 0.5);
+    }
+  }
+  & td {
+    border: $content-border;
+    border-collapse: collapse;
+    height: 40px;
+    text-align: center;
+    font-weight: $table-font-weight;
+    font-size: $table-font-size;
+
+    &:first-child{
+      text-align: left;
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+  }
+}
