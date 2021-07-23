@@ -1,24 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useEffect, useState} from 'react';
+import {Header} from "components/Header/Header";
+import {Content} from "components/Content/Content";
+import {SideBar} from "components/SideBar/SideBar";
+import {Footer} from "components/Footer/Footer";
+import {getCarsData} from "api/api";
+import withLoading from "hocs/withLoading";
+import {ResponseCars} from "types";
+import 'app.scss';
 
-function App() {
+const ContentWithLoading = withLoading(Content);
+const App = () => {
+  const [carsData, setCarsData] = useState<ResponseCars | null>(null);
+  useEffect( () => {
+    const getCarsFromApi = async () => {
+      setCarsData(await getCarsData());
+    }
+    getCarsFromApi();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="wrapper">
+      <Header/>
+      <div className="container">
+        <SideBar/>
+        <ContentWithLoading
+          isLoading={!carsData?.cars}
+          cars={carsData?.cars}
+          tariffs_list={carsData?.tariffs_list}
+        />
+      </div>
+      <Footer/>
     </div>
   );
 }
