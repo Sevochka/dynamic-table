@@ -1,0 +1,8 @@
+@import "src/shared";
+.sidebar{
+  width: 100px;
+  height: 100%;
+  background: #E4E5E6;
+  flex-shrink: 0;
+  box-shadow: $block-box-shadow;
+}

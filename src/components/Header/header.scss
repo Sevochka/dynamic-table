@@ -1,0 +1,8 @@
+@import "src/shared";
+
+.header{
+  height: 50px;
+  background: #F2F3F4;
+  box-shadow: $block-box-shadow;
+  flex-shrink: 0;
+}

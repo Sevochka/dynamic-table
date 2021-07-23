@@ -1,0 +1,9 @@
+@import "src/shared";
+
+.footer{
+  height: 50px;
+  margin-top: auto;
+  flex-shrink: 0;
+  background: #cacaca;
+  box-shadow: $block-box-shadow;
+}
