@@ -20,21 +20,29 @@ const Content:FC<Props> = ({cars, tariffs_list}) => {
   const handleOnSelect = (car: Car) => {
     setSelectedCar(car);
   }
-  const infoBoxTitle =  selectedCar
+  // Позволяет стирать данные о выбранной машине, если ее нет в списке
+  const carsHasSelectedCar = carsFiltered.indexOf(selectedCar as Car) !== -1;
+  if (selectedCar && !carsHasSelectedCar){
+    setSelectedCar(null);
+  }
+
+  const infoBoxTitle = selectedCar
     ? `Выбран автомобиль ${selectedCar.mark} ${selectedCar.model}. Года выпуска: 
-    ${Object.keys(selectedCar.tariffs).reduce((res, key) =>
-      `${res} ${key}:${selectedCar.tariffs[key].year}`, "")}`
+    ${Object.keys(selectedCar.tariffs).reduce((res, key, i, arr) =>
+      `${res} ${key}: ${selectedCar.tariffs[key].year} года${arr.length-1 !== i ? ", " : "."}`, "")}`
     : `Выберите автомобиль`;
 
   return (
     <main className='content'>
-    <SearchBar handleStartSearch={handleStartSearch}  inputPlaceholder="Поиск" btnText="Найти"/>
-    <div className="content__table-container">
-      <Table cars={carsFiltered} tariffsList={tariffs_list} handleSelect={handleOnSelect}/>
-    </div>
-    <InfoBox title={
-      infoBoxTitle
-    }/>
+      <SearchBar handleStartSearch={handleStartSearch} inputPlaceholder="Поиск" btnText="Найти"/>
+      <div className="content__table-container">
+        <Table
+          cars={carsFiltered}
+          tariffsList={tariffs_list}
+          handleSelect={handleOnSelect}
+        />
+      </div>
+      <InfoBox title={infoBoxTitle}/>
   </main>
   );
 }
