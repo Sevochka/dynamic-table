@@ -22,7 +22,7 @@ const convertObjectFieldsToString = (car: Car): string => {
   }, "")
 }
 
-const useFilteredData = (items: any[], searchText: string) => {
+const useFilteredData = (items: Car[], searchText: string) => {
   const filteredItems = useMemo(() => {
     return items.filter((el) => {
       return convertObjectFieldsToString(el).toLowerCase().indexOf(searchText.toLowerCase()) !== -1;
