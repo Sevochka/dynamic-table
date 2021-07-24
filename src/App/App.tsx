@@ -6,7 +6,7 @@ import {Footer} from "components/Footer/Footer";
 import {getCarsData} from "api/api";
 import withLoading from "hocs/withLoading";
 import {ResponseCars} from "types";
-import 'app.scss';
+import './app.scss';
 
 const ContentWithLoading = withLoading(Content);
 const App = () => {
