@@ -13,7 +13,11 @@ const Table:FC<Props> = ({tariffsList, cars, handleSelect}) => {
 
   const getClassName = (name:string | string[]) => {
     if (!sortConfig) return;
-    if (Array.isArray(name) && Array.isArray(sortConfig.key)) {
+    if (
+      Array.isArray(name) &&
+      Array.isArray(sortConfig.key) &&
+      JSON.stringify(name) === JSON.stringify(sortConfig.key)
+    ) {
       return sortConfig.direction;
     }
     return sortConfig.key === name ? sortConfig.direction : undefined;
