@@ -6,7 +6,7 @@ type Tariff = {
 type Car = {
   mark: string,
   model: string,
-  tariffs: Tariff[];
+  tariffs: Tariff;
 }
 type TariffsList = string[];
 
